@@ -1,4 +1,5 @@
 import Hamburger from "@image/hamburger.svg";
+import Notice from '@image/notice.svg'
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
 import { setShowSideBar ,setIsLogin} from '../store/reducer';
@@ -24,6 +25,7 @@ const Header = () => {
                 </div>
             </div>
             <div className="loginPanel">
+                <img className="notice" src={Notice}/>
                 <div className="photo">
                     <img src={state.imgLink}></img>
                 </div>

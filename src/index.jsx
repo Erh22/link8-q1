@@ -10,6 +10,7 @@ import reducer from '@store/reducer';
 import { HashRouter, Route, Switch, Redirect, useHistory } from "react-router-dom";
 import { createLogger } from 'redux-logger'
 
+// reducer console套件配置，初始為收合狀態
 const logger = createLogger({
     collapsed: true
 });
