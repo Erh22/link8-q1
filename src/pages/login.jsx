@@ -1,14 +1,23 @@
-import { useEffect, useState, useCallback } from "react";
-import { HashRouter as Router, Route, Link, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useState } from "react";
 import '@/style.css';
 import { useSelector, useDispatch } from 'react-redux';
-function Login(props) {
-    const history = useHistory()
+import { setIsLogin ,setUserData} from '../store/reducer';
 
-    const { setIslogin } = props;
+const getLogin = (username, password) => fetch('https://l8-upgrade-apis.vercel.app/api/login', {
+    method: 'post',
+    body: JSON.stringify({ username: username, password: password }),
+    headers: new Headers({
+        'Content-Type': 'application/json',
+    })
+})
+
+function Login() {
+    const dispatch = useDispatch();
+    const history = useHistory()
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [tip, setTip] = useState({ show: false, message: '' })
+    const isLogin = useSelector((state) => state.isLogin)
 
     const editUsername = (e) => {
         setUsername(e.target.value);
@@ -16,30 +25,18 @@ function Login(props) {
     const editPassword = (e) => {
         setPassword(e.target.value);
     }
-    const handleLogin = () => {
-        // const token = JSON.parse(localStorage.getItem('Authorization'))
-        fetch('https://l8-upgrade-apis.vercel.app/api/login', {
-            method: 'post',
-            body: JSON.stringify({ username: username, password: password }),
-            headers: new Headers({
-                'Content-Type': 'application/json',
-                // 'Authorization': token
-            })
-        }).then((res) => {
-            return res.json()
-        }).then((res) => {
-            console.log(res, 'res')
-            console.log(res.data.name, 'login data')
-            if (res.success) {
-                localStorage.setItem('Authorization', res.token);
-                setIslogin(true);
-                history.push('/')
-            } else {
-                alert(res.message)
-            }
-        }).catch((error) => {
-            console.log('Error:', error)
-        })
+
+    const handleLogin = async () => {
+        const jsonData = await getLogin(username, password)
+        const res = await jsonData.json()
+        if (res.success) {
+            localStorage.setItem('Authorization', res.token);
+            dispatch(setUserData(res.data));
+            dispatch(setIsLogin(true))
+            history.push('/')
+        } else {
+            alert(res.message)
+        }
     }
     return (
         <div className="box login_box">

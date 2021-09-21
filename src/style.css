@@ -48,6 +48,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-left: 10px;
 }
 .header .left{
     display: flex;
@@ -68,12 +69,15 @@
 .header .loginPanel{
     display: flex;
     align-items: center;
+    width: 30%;
+    justify-content: center;
 }
 .header .loginPanel .photo{
     width: 35px;
     height: 35px;
     overflow: hidden;
     border-radius: 30px;
+    margin-right: 5px;
 }
 .header .loginPanel .photo img{
     width: 100%;
@@ -105,6 +109,10 @@
 }
 .tabBox .list div{
     white-space: nowrap;
+}
+.tabBox .list a{
+    color: #242424;
+    padding-left: 10px;
 }
 .tabBox .list .active{
     color: #0075FF;

@@ -1,37 +1,55 @@
-const defaultState = {
-    username: '信箱',
-    name:'姓名',
-    role:'',
-    imgLink:'',
-    token: '111',
+
+// 把Action的名稱 提出來避免使用時打錯也方便管理跟閱讀
+const types = {
+    SET_USER_DATA: 'SET_USER_DATA',
+    SET_TOKEN: 'SET_TOKEN',
+    SET_SIDE_BAR: 'SET_SIDE_BAR',
+    SET_IS_LOGIN:'SET_IS_LOGIN',
 }
+
+// 初始值
+const defaultState = {
+    username: 'guest@mail.com',
+    name: '',
+    role: '',
+    imgLink: '',
+    token: null,
+    showSideBar: true,
+    isLogin:false
+}
+
+export const setUserData = userData => ({
+    type: types.SET_USER_DATA,
+    userData
+});
+
+export const setToken = token => ({
+    type: types.SET_TOKEN,
+    token
+});
+
+export const setShowSideBar = showSideBar => ({
+    type: types.SET_SIDE_BAR,
+    showSideBar
+});
+
+export const setIsLogin = isLogin => ({
+    type: types.SET_IS_LOGIN,
+    isLogin
+});
 
 const reducer = (state = defaultState, action) => {
     switch (action.type) {
-        case 'FETCH_USERNAME':{
-            const newState = JSON.parse(JSON.stringify(state));
-            newState.username = action.username
-            return newState
+        case types.SET_USER_DATA: return { ...state, username: action.userData.username, role: action.userData.role, name: action.userData.name,imgLink:action.userData.imgLink }
+        
+        case types.SET_TOKEN: {
+            return { ...state, token: action.token }
         }
-        case 'FETCH_NAME':{
-            const newState = JSON.parse(JSON.stringify(state));
-            newState.name = action.name
-            return newState
+        case types.SET_SIDE_BAR: {
+            return { ...state, showSideBar: action.showSideBar }
         }
-        case 'FETCH_ROLE':{
-            const newState = JSON.parse(JSON.stringify(state));
-            newState.role = action.role
-            return newState
-        }
-        case 'FETCH_LINK':{
-            const newState = JSON.parse(JSON.stringify(state));
-            newState.imgLink = action.imgLink
-            return newState
-        }
-        case 'FETCH_TOKEN':{
-            const newState = JSON.parse(JSON.stringify(state));
-            newState.token = action.token
-            return newState
+        case types.SET_IS_LOGIN: {
+            return { ...state, isLogin: action.isLogin }
         }
         default:
             return state;
@@ -39,10 +57,3 @@ const reducer = (state = defaultState, action) => {
 };
 
 export default reducer;
-
-// export default (state = defaultState,action) => {
-//     switch(action.type){
-//         default:
-//             return state;
-//     }
-// }

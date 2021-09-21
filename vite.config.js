@@ -19,6 +19,7 @@ export default defineConfig({
             '@style': path.resolve(__dirname, './src/style.css'),
             '@image': path.resolve(__dirname, './src/images'),
             '@store': path.resolve(__dirname, './src/store'),
+            '@hook': path.resolve(__dirname, './src/hook'),
         },
     },
     plugins: [

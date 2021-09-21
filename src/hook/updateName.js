@@ -1,10 +1,6 @@
-import { Modal, Button, Input } from 'antd';
-import { useEffect, useState, useCallback } from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useState } from "react";
+import { useDispatch } from 'react-redux';
 import { setUserData } from '@store/reducer';
-import SideBar from '@components/SideBar';
-import Header from '@components/Header';
-// import userNameData from '../hook/auth'
 
 const updateName = (token,editName) => fetch('https://l8-upgrade-apis.vercel.app/api/users/updateName', {
     method: 'put',
@@ -21,9 +17,8 @@ const getNewName = (token,state) => fetch(`https://l8-upgrade-apis.vercel.app/ap
         'Authorization': 'Bearer ' + token
     })
 })
-function Home() {
-    // const { editName,handleOk,isModalVisible,handleCancel,handleChangeName } = userNameData();
-    // userNameData()
+
+const userNameData = () => {
     const dispatch = useDispatch();
     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -40,7 +35,6 @@ function Home() {
     useEffect(() => {
         console.log('state.name', state.name)
         if (!state.name) {
-            setEditName(state.name)
             setIsModalVisible(true)
         } else {
             setIsModalVisible(false)
@@ -70,22 +64,8 @@ function Home() {
     const handleChangeName = (e) => {
         setEditName(e.target.value)
     }
-    return (
-        <div className="member">
-            <Header />
-            <div className="tabBox">
-                <SideBar />
-                <div className="right_item">
-                    {/* <Button type="primary" onClick={showModal}>
-                        修改使用者名稱
-                    </Button> */}
-                    <Modal title="使用者資料補全" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-                        <Input placeholder="請輸入使用者名稱" value={editName} onChange={handleChangeName} />
-                    </Modal>
-                </div>
-            </div>
-        </div>
-    );
+
+    return{editName,handleOk,isModalVisible,handleCancel,handleChangeName}
 }
 
-export default Home;
+export default userNameData;
