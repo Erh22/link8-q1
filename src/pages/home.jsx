@@ -75,7 +75,8 @@ function Home() {
             <Header />
             <div className="tabBox">
                 <SideBar />
-                <div className="right_item">
+                <div className="flex flex-col pl-8">
+                    <div>首頁</div>
                     {/* <Button type="primary" onClick={showModal}>
                         修改使用者名稱
                     </Button> */}

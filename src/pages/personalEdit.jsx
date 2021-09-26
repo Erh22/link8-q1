@@ -42,7 +42,7 @@ function PersonalEdit() {
             <Header />
             <div className="tabBox">
                 <SideBar />
-                <div className="right_item">
+                <div className="flex flex-col pl-8">
                     <h1>帳戶設定</h1>
                     <div className="imgBox">
                         <img src={state.imgLink}></img>

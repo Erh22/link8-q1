@@ -1,5 +1,6 @@
-import Login from '@page/login'
-import Register from '@page/register'
+import {lazy,Suspense} from "react";
+const Login = lazy(()=> import('@page/login'))
+const Register = lazy(()=> import('@page/register'))
 
 const publicRoutes = [
     {

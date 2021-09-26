@@ -100,17 +100,8 @@
     display: flex;
     width: 100%;
 }
-.tabBox .list{
-    width: 15%;
-    height: 100vh;
-    border-right: 1px solid #151A54;
-    overflow: hidden;
-    transition: 0.5s;
-    display: flex;
-    flex-direction: column;
-}
 .tabBox .list.listClose{
-    width: 0;
+    width: 40px;
 }
 .tabBox .list div{
     white-space: nowrap;
@@ -118,9 +109,29 @@
 .tabBox .list a{
     color: #242424;
     padding-left: 10px;
+    display: flex;
 }
 .tabBox .list .active{
     color: #0075FF;
+}
+.toggle_list .list_item{
+    padding:10px;
+}
+.toggle_list .title{
+    display: flex;
+}
+.toggle_list .title img{
+    height: 20px;
+    margin-right: 10px;
+}
+.toggle_list .title span{
+    line-height: 20px;
+}
+.toggle_list .drop_down{
+    height: 40px;
+}
+.toggle_list .drop_down.close{
+    height: 0;
 }
 
 
