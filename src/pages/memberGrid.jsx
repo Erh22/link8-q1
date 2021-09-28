@@ -10,8 +10,8 @@ const MemberGrid = () => {
         <Header />
         <div className="tabBox">
             <SideBar />
-            <div className="flex flex-col pl-8">
-                <h1>表格式</h1>
+            <div className="flex flex-col p-6">
+                <h1 className="text-2xl font-bold">表格式</h1>
             </div>
         </div>
     </div>

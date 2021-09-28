@@ -52,27 +52,27 @@ const SideBar = (props) => {
             <div className="toggle_list">
                 <div className="border-b border-gray-900 border-solid p-2">
                     <div className="title">
-                        <img src={UserSvg} />
+                        <img src={UserSvg} className="h-5 mr-3" />
                         <span onClick={toggleMemberDropDown}>個人資訊管理</span>
                     </div>
-                    <div className={`duration-500 overflow-hidden pl-7 h-7 ${memberDropDownMenu ? '' : 'h-0'}`}>
+                    <div className={`duration-500 overflow-hidden pl-8 h-7 ${memberDropDownMenu ? '' : 'h-0'}`}>
                         <Link to="/account/profile-setting">
-                            <div className={currentPage === '/account/profile-setting' ? 'active' : ''}>帳戶設定</div>
+                            <div className={currentPage === '/account/profile-setting' ? 'text-blue-400' : ''}>帳戶設定</div>
                         </Link>
                     </div>
                 </div>
                 {state.role == 'ADMIN' &&
                     <div className="p-2">
                         <div className="title">
-                            <img src={AdminSvg} />
+                            <img src={AdminSvg} className="h-5 mr-3" />
                             <span onClick={toggleAdminDropDown}>會員管理</span>
                         </div>
-                        <div className={`duration-500 overflow-hidden pl-7 h-14 ${adminDropDownMenu ? '' : 'h-0'}`}>
+                        <div className={`duration-500 overflow-hidden pl-8 h-14 ${adminDropDownMenu ? '' : 'h-0'}`}>
                             <Link to="/memberlist">
-                                <div className={currentPage === '/memberlist' ? 'active' : ''}>列表式</div>
+                                <div className={currentPage === '/memberlist' ? 'text-blue-400' : ''}>列表式</div>
                             </Link>
                             <Link to="/membergrid">
-                                <div className={currentPage === '/membergrid' ? 'active' : ''}>表格式</div>
+                                <div className={currentPage === '/membergrid' ? 'text-blue-400' : ''}>表格式</div>
                             </Link>
                         </div>
                     </div>

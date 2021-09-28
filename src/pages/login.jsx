@@ -41,16 +41,16 @@ function Login() {
     return (
         <div className="box login_box">
             <div className="content">
-                <h1>登入</h1>
+                <h1 className="text-2xl font-bold">登入</h1>
                 <div>
                     <div className="input_box input_box_account">
-                        <span>帳號</span><input type="text" value={username} onChange={editUsername}></input>
+                        <span>帳號</span><input type="text" value={username} onChange={editUsername} className="border border-gray-900 border-solid rounded-sm"></input>
                     </div>
                     <div className="input_box input_box_password">
-                        <span>密碼</span><input type="password" value={password} onChange={editPassword}></input>
+                        <span>密碼</span><input type="password" value={password} onChange={editPassword} className="border border-gray-900 border-solid rounded-sm"></input>
                     </div>
                 </div>
-                <button className="btn" onClick={() => handleLogin()}>登入</button>
+                <button className="w-1/2 h-8 mt-5 rounded-md bg-blue-500 text-white" onClick={() => handleLogin()}>登入</button>
                 <Link to="/register">去註冊</Link>
             </div>
         </div>

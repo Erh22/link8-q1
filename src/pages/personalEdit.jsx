@@ -42,16 +42,16 @@ function PersonalEdit() {
             <Header />
             <div className="tabBox">
                 <SideBar />
-                <div className="flex flex-col pl-8">
-                    <h1>帳戶設定</h1>
-                    <div className="imgBox">
-                        <img src={state.imgLink}></img>
+                <div className="flex flex-col p-6">
+                    <h1 className="text-2xl font-bold">帳戶設定</h1>
+                    <div className="w-200 h-200">
+                        <img src={state.imgLink} className="w-full"></img>
                     </div>
                     <div>
                         <span>{state.name}</span><span>({state.username})</span>
                     </div>
                     <input type="file" accept="image/gif,image/jpeg,image/jpg,image/png" multiple onChange={handleChooseImg} />
-                    <button className="upLoadBtn" onClick={handleUploadImg}>上傳圖片</button>
+                    <button className="text-white bg-blue-500 h-8 w-20 rounded" onClick={handleUploadImg}>上傳圖片</button>
                 </div>
             </div>
         </div>
