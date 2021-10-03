@@ -64,23 +64,23 @@ function Register() {
     return (
         <div className="box register_box">
             <div className="content">
-                <h1>註冊</h1>
+                <h1 className="text-2xl font-bold">註冊</h1>
                 <div>
                     <div className="input_box input_box_account">
-                        <span>帳號</span><input value={username} type="text" onChange={editUsername} placeholder="必須是信箱"></input>
+                        <span>帳號</span><input className="border border-gray-900 border-solid rounded-sm" value={username} type="text" onChange={editUsername} placeholder="必須是信箱"></input>
                     </div>
                     <div className="input_box input_box_account">
-                        <span>使用者名稱</span><input value={name} type="text" onChange={editName} placeholder="使者者名稱"></input>
+                        <span>使用者名稱</span><input className="border border-gray-900 border-solid rounded-sm" value={name} type="text" onChange={editName} placeholder="使者者名稱"></input>
                     </div>
                     <div className="input_box input_box_password">
-                        <span>密碼</span><input type="password" value={password} onChange={editPassword} placeholder="4-8字元;首尾必須是英文;中間必須是數字"></input>
+                        <span>密碼</span><input className="border border-gray-900 border-solid rounded-sm" type="password" value={password} onChange={editPassword} placeholder="4-8字元;首尾必須是英文;中間必須是數字"></input>
                     </div>
                     <div className="input_box input_box_surePassword">
-                        <span>確認密碼</span><input type="password" value={checkPassword} onChange={editCheckPassword} placeholder="4-8字元;首尾必須是英文;中間必須是數字"></input>
+                        <span>確認密碼</span><input className="border border-gray-900 border-solid rounded-sm" type="password" value={checkPassword} onChange={editCheckPassword} placeholder="4-8字元;首尾必須是英文;中間必須是數字"></input>
                         {tip.show && <p className="tip">{tip.message}</p>}
                     </div>
                 </div>
-                <button className="btn" onClick={handleRegister}>註冊</button>
+                <button className="w-1/2 h-8 mt-5 rounded-md bg-blue-500 text-white" onClick={handleRegister}>註冊</button>
                 <Link to="/login">返回登入</Link>
             </div>
         </div>

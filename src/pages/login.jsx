@@ -3,6 +3,7 @@ import { useState } from "react";
 import '@/style.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { setIsLogin ,setUserData} from '../store/reducer';
+import { setToken } from '@store/reducer';
 
 const getLogin = (username, password) => fetch('https://l8-upgrade-apis.vercel.app/api/login', {
     method: 'post',
@@ -19,6 +20,9 @@ function Login() {
     const [password, setPassword] = useState('')
     const isLogin = useSelector((state) => state.isLogin)
 
+    // 測試token
+    const state = useSelector((state)=>state)
+
     const editUsername = (e) => {
         setUsername(e.target.value);
     }
@@ -31,6 +35,10 @@ function Login() {
         const res = await jsonData.json()
         if (res.success) {
             localStorage.setItem('Authorization', res.token);
+            dispatch(setToken(res.token));
+
+            // 測試token
+            console.log('login token',state.token)
             dispatch(setUserData(res.data));
             dispatch(setIsLogin(true))
             history.push('/')

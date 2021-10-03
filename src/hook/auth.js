@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch,useSelector } from 'react-redux';
-import { setUserData, setToken ,setIsLogin} from '../store/reducer';
+import { setUserData, setToken ,setIsLogin} from '@store/reducer';
 
 const fetchApiUser = (token) => fetch('https://l8-upgrade-apis.vercel.app/api/user/', {
     method: 'get',
@@ -24,6 +24,7 @@ const useAuth = () => {
             const jsonData = await fetchApiUser(token);
             const result = await jsonData.json();
             if (result.success || token) {
+                console.log('authtoken',token)
                 dispatch(setIsLogin(true));
                 setIsLoading(false);
                 dispatch(setUserData(result.data));
